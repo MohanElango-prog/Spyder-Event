@@ -1,0 +1,63 @@
+* {
+  box-sizing: border-box;
+}
+.App {
+  font-family: "Hachi Maru Pop", cursive;
+  display: flex;
+  padding: 15px;
+}
+.App .Meta {
+  flex-grow: 1;
+  padding-right: 15px;
+}
+.App .Meta input {
+  font-family: inherit;
+  padding: 5px;
+  width: 100%;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.25);
+  border: 2px solid rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+}
+.App .Meta button {
+  padding: 10px 15px;
+  border: 2px solid #87ceeb;
+  background-color: #e7e7e7;
+  font-family: inherit;
+  margin: 20px 0;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.App #downloadWrapper {
+  padding: 20px;
+}
+.App #certificateWrapper {
+  box-shadow: 0 0 5px #000;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+.App #certificateWrapper img {
+  display: block;
+}
+.App #certificateWrapper p {
+  font-family: auto;
+  margin: 0;
+}
+.App .certifyName {
+  position: absolute;
+  left: 255px;
+  top: 190px;
+  font-size: 15pt;
+}
+.App .certifyCollege {
+  position: absolute;
+  left: 435px;
+  top: 200px;
+  font-size: 8pt;
+}
+.App .certifyEvent {
+  position: absolute;
+  left: 165px;
+  top: 232px;
+  font-size: 9pt;
+}
