@@ -1,16 +1,17 @@
 * {
   box-sizing: border-box;
 }
-.App {
+.Download {
   font-family: "Hachi Maru Pop", cursive;
-  display: flex;
+  /* display: flex; */
   padding: 15px;
+  width: fit-content;
 }
-.App .Meta {
+.Download .Meta {
   flex-grow: 1;
   padding-right: 15px;
 }
-.App .Meta input {
+.Download .Meta input {
   font-family: inherit;
   padding: 5px;
   width: 100%;
@@ -18,7 +19,7 @@
   border: 2px solid rgba(0, 0, 0, 0.25);
   border-radius: 5px;
 }
-.App .Meta button {
+.Download .Meta button {
   padding: 10px 15px;
   border: 2px solid #87ceeb;
   background-color: #e7e7e7;
@@ -27,35 +28,35 @@
   border-radius: 10px;
   cursor: pointer;
 }
-.App #downloadWrapper {
+.Download #downloadWrapper {
   padding: 20px;
 }
-.App #certificateWrapper {
+.Download #certificateWrapper {
   box-shadow: 0 0 5px #000;
   border-radius: 10px;
   overflow: hidden;
   position: relative;
 }
-.App #certificateWrapper img {
+.Download #certificateWrapper img {
   display: block;
 }
-.App #certificateWrapper p {
+.Download #certificateWrapper p {
   font-family: auto;
   margin: 0;
 }
-.App .certifyName {
+.Download .certifyName {
   position: absolute;
   left: 255px;
   top: 190px;
   font-size: 15pt;
 }
-.App .certifyCollege {
+.Download .certifyCollege {
   position: absolute;
   left: 435px;
   top: 200px;
   font-size: 8pt;
 }
-.App .certifyEvent {
+.Download .certifyEvent {
   position: absolute;
   left: 165px;
   top: 232px;
