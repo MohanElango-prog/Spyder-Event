@@ -11,9 +11,11 @@ function App({ }) {
 		event: "",
 		college: "",
 		department: "",
+		email:"",
+		mobileNumber:""
 	});
+	// let limit = formDetails.event === "Debugging" ? 5 : 2;
 	const navigate = useNavigate();
-
 
 	const optionb = [
 		{ value: 'Quiz', label: "Quiz" },
@@ -34,11 +36,17 @@ function App({ }) {
 		let newfield = { name: "" };
 		SetData([...data, newfield]);
 	};
-	const removeFields = (ind) => {
+	const removeFields = (ind,event) => {
 		let input = [...data];
-		if (ind !== 0) input.splice(ind, 1);
+		if (ind !== 0 ) {input.splice(ind, 1)}
+		if (event !== "Marketing") {input.splice(1,2)}
+		console.log(input.length);
 		SetData(input);
 	};
+	
+	// const removeOther=(ind,)=>{
+	// 	let input=
+	// }
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		console.log(data);
@@ -50,10 +58,9 @@ function App({ }) {
 			state: { data, formDetails },
 		});
 	};
-let limit = formDetails.event === "Debugging" ? 5 : 2;
 	return (
 		<Container fluid className="container">
-			<Header as="h2">React google sheet</Header>
+			<Header as="h2">Event Registration</Header>
 			<Form className="form">
 				{/* <Form.Field>
 					<DropDown
@@ -74,7 +81,7 @@ let limit = formDetails.event === "Debugging" ? 5 : 2;
 							addNewOption={true}
 							options={optionb}
 							isClearable={true}
-							onChange={(e) => SetFormDetails({ ...formDetails, event: e.target.value })} />
+							onChange={(e) => {SetFormDetails({ ...formDetails, event: e.value }) ; removeFields({event:e.value});}} />
 					</Form.Field>
 				<Form.Field>
 					<label>Name</label>
@@ -94,7 +101,15 @@ let limit = formDetails.event === "Debugging" ? 5 : 2;
 							</div>
 						);
 					})}
-					{limit > data.length ? <Button onClick={addFields}>Add</Button> : null}
+					{((formDetails.event === "Marketing" ? 5 : 2 ) > (data.length) )? <Button onClick={addFields}>+Add Names</Button> : null}
+				</Form.Field>
+				<Form.Field>
+					<label>Email</label>
+					<input name="Email" placeholder="Enter your Email" onChange={(e) => SetFormDetails({ ...formDetails, email: e.target.value })} />
+				</Form.Field>
+				<Form.Field>
+					<label>Mobile Number</label>
+					<input name="Mobile Number" placeholder="Enter your Mobile Number" onChange={(e) => SetFormDetails({ ...formDetails, mobileNumber: e.target.value })} />
 				</Form.Field>
 				<Form.Field>
 					<label>College</label>
