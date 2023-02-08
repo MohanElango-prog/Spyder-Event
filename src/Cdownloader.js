@@ -18,6 +18,7 @@ const CertificateDownloader = () => {
     email: details.email,
     mobileNumber: details.mobileNumber,
     college: details.college,
+    course: details.course,
     event: details.event,
     department: details.department,
   }));
