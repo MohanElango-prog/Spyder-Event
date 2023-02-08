@@ -13,6 +13,13 @@ const CertificateDownloader = () => {
   let nameData = location.state.data;
   let details = location.state.formDetails;
 
+  let names = nameData
+    .map((txt) => txt.name)
+    .filter(function (item) {
+      return typeof item === "string";
+    });
+  console.log(names);
+
   let data = nameData.map((item) => ({
     name: item.name,
     email: details.email,

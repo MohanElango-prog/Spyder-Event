@@ -18,25 +18,24 @@ function App() {
   const navigate = useNavigate();
 
   const optionc = [
-    { value: "Bsc - 1st year", label: "Bsc - 1st year"},
-    { value: "Bsc - 2nd year", label: "Bsc - 2nd year"},
-    { value: "Bsc - 3rd year", label: "Bsc - 3rd year"},
-    { value: "Msc - 1st year", label: "Msc - 1st year"},
-    { value: "Msc - 2nd year", label: "Msc - 2nd year"},
-    { value: "Mca - 1st year", label: "Bsc - 1st year"},
-    { value: "Mca - 2nd year", label: "Mca - 2nd year"},
-    { value: "Bcom - 1st year", label: "Bcom - 1st year"},
-    { value: "Bcom - 2nd year", label: "Bcom - 2nd year"},
-    { value: "Bcom - 3rd year", label: "Bcom - 3rd year"},
-    { value: "Mcom - 1st year", label: "Mcom - 1st year"},
-    { value: "Mcom - 2nd year", label: "Mcom - 2nd year"},
-    { value: "BA - 1st year", label: "BA - 1st year"},
-    { value: "BA - 2nd year", label: "BA - 2nd year"},
-    { value: "BA - 3rd year", label: "BA - 3rd year"},
-    { value: "MA - 1st year", label: "MA - 1st year"},
-    { value: "MA - 2nd year", label: "MA - 2nd year"},
-
-  ]
+    { value: "Bsc - 1st year", label: "Bsc - 1st year" },
+    { value: "Bsc - 2nd year", label: "Bsc - 2nd year" },
+    { value: "Bsc - 3rd year", label: "Bsc - 3rd year" },
+    { value: "Msc - 1st year", label: "Msc - 1st year" },
+    { value: "Msc - 2nd year", label: "Msc - 2nd year" },
+    { value: "Mca - 1st year", label: "Bsc - 1st year" },
+    { value: "Mca - 2nd year", label: "Mca - 2nd year" },
+    { value: "Bcom - 1st year", label: "Bcom - 1st year" },
+    { value: "Bcom - 2nd year", label: "Bcom - 2nd year" },
+    { value: "Bcom - 3rd year", label: "Bcom - 3rd year" },
+    { value: "Mcom - 1st year", label: "Mcom - 1st year" },
+    { value: "Mcom - 2nd year", label: "Mcom - 2nd year" },
+    { value: "BA - 1st year", label: "BA - 1st year" },
+    { value: "BA - 2nd year", label: "BA - 2nd year" },
+    { value: "BA - 3rd year", label: "BA - 3rd year" },
+    { value: "MA - 1st year", label: "MA - 1st year" },
+    { value: "MA - 2nd year", label: "MA - 2nd year" },
+  ];
 
   const optionb = [
     { value: "Quiz", label: "Quiz" },
@@ -87,7 +86,15 @@ function App() {
   };
   const handleSubmit = (e) => {
     console.log(formDetails);
-    if (formDetails.college && formDetails.department && formDetails.email && formDetails.email && formDetails.event && formDetails.mobileNumber && formDetails.course) {
+    if (
+      formDetails.college &&
+      formDetails.department &&
+      formDetails.email &&
+      formDetails.email &&
+      formDetails.event &&
+      formDetails.mobileNumber &&
+      formDetails.course
+    ) {
       if ([...data].every((item) => item.name !== "")) {
         e.preventDefault();
         navigate("/download", { state: { data, formDetails } });
