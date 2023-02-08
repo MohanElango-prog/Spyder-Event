@@ -64,11 +64,11 @@ function App() {
     }
   };
   const handleSubmit = (e) => {
-    console.log(formDetails);
+    console.log(data.push({ details: formDetails }));
     if (formDetails.college && formDetails.department && formDetails.email && formDetails.email && formDetails.event && formDetails.mobileNumber) {
       if ([...data].every((item) => item.name !== "")) {
-        e.preventDefault();
-        navigate("/download", { state: { data, formDetails } });
+        // e.preventDefault();
+        // navigate("/download", { state: { data, formDetails } });
       } else {
         setError(true);
       }

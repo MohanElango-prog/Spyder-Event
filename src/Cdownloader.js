@@ -13,16 +13,27 @@ const CertificateDownloader = () => {
   let nameData = location.state.data;
   let details = location.state.formDetails;
 
-  let data = nameData.map((item) => ({
-    name: item.name,
-    email: details.email,
-    mobileNumber: details.mobileNumber,
-    college: details.college,
-    event: details.event,
-    department: details.department,
-  }));
+  let names = nameData
+    .map((txt) => txt.name)
+    .filter(function (item) {
+      return typeof item === "string";
+    });
+  console.log(names);
+
+  let data = names.map((item) => {
+    // console.log(item);
+    return {
+      name: item,
+      email: details.email,
+      mobileNumber: details.mobileNumber,
+      college: details.college,
+      event: details.event,
+      department: details.department,
+    };
+  });
+  // console.log(data);
   let eventObj = {
-    quiz: { event: "Quiz", sheet: "https://sheet.best/api/sheets/01a29b8a-ad23-4bc0-b116-a2938c4cc7c1" },
+    quiz: { event: "Quiz", sheet: "https://sheet.best/api/sheets/ba5f380b-a7e1-4792-bd13-670f18fbb032" },
     PP: { event: "Paper Presentation", sheet: "Paper Presentation" },
     DB: { event: "Debugging", sheet: "Debugging" },
     marketing: { event: "Marketing", sheet: "https://sheet.best/api/sheets/01a29b8a-ad23-4bc0-b116-a2938c4cc7c1" },
