@@ -22,10 +22,10 @@ const CertificateDownloader = () => {
     department: details.department,
   }));
   let eventObj = {
-    quiz: { event: "Quiz", sheet: "https://sheet.best/api/sheets/01a29b8a-ad23-4bc0-b116-a2938c4cc7c1" },
+    quiz: { event: "Quiz", sheet: "https://sheet.best/api/sheets/03fed164-3b61-44b4-afcb-fea3dc9d2b5d" },
     PP: { event: "Paper Presentation", sheet: "Paper Presentation" },
     DB: { event: "Debugging", sheet: "Debugging" },
-    marketing: { event: "Marketing", sheet: "https://sheet.best/api/sheets/01a29b8a-ad23-4bc0-b116-a2938c4cc7c1" },
+    marketing: { event: "Marketing", sheet: "https://sheet.best/api/sheets/03fed164-3b61-44b4-afcb-fea3dc9d2b5d" },
     PD: { event: "Poster Design", sheet: "Poster Design" },
     Idea: { event: "Ideathon", sheet: "Ideathon" },
     Dance: { event: "Dance", sheet: "Dance" },
