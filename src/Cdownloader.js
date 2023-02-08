@@ -20,26 +20,23 @@ const CertificateDownloader = () => {
     });
   console.log(names);
 
-  let data = names.map((item) => {
-    // console.log(item);
-    return {
-      name: item,
-      email: details.email,
-      mobileNumber: details.mobileNumber,
-      college: details.college,
-      event: details.event,
-      department: details.department,
-    };
-  });
-  // console.log(data);
+  let data = nameData.map((item) => ({
+    name: item.name,
+    email: details.email,
+    mobileNumber: details.mobileNumber,
+    college: details.college,
+    course: details.course,
+    event: details.event,
+    department: details.department,
+  }));
   let eventObj = {
-    quiz: { event: "Quiz", sheet: "https://sheet.best/api/sheets/ba5f380b-a7e1-4792-bd13-670f18fbb032" },
-    PP: { event: "Paper Presentation", sheet: "Paper Presentation" },
-    DB: { event: "Debugging", sheet: "Debugging" },
-    marketing: { event: "Marketing", sheet: "https://sheet.best/api/sheets/01a29b8a-ad23-4bc0-b116-a2938c4cc7c1" },
-    PD: { event: "Poster Design", sheet: "Poster Design" },
-    Idea: { event: "Ideathon", sheet: "Ideathon" },
-    Dance: { event: "Dance", sheet: "Dance" },
+    quiz: { event: "Quiz", sheet: "https://sheet.best/api/sheets/9a7fc784-20dc-4ddc-8878-8e7d825f4610" },
+    PP: { event: "Paper Presentation", sheet: "https://sheet.best/api/sheets/9a7fc784-20dc-4ddc-8878-8e7d825f4610" },
+    DB: { event: "Debugging", sheet: "https://sheet.best/api/sheets/9a7fc784-20dc-4ddc-8878-8e7d825f4610" },
+    marketing: { event: "Marketing", sheet: "https://sheet.best/api/sheets/9a7fc784-20dc-4ddc-8878-8e7d825f4610" },
+    PD: { event: "Poster Design", sheet: "https://sheet.best/api/sheets/9a7fc784-20dc-4ddc-8878-8e7d825f4610" },
+    Idea: { event: "Ideathon", sheet: "https://sheet.best/api/sheets/9a7fc784-20dc-4ddc-8878-8e7d825f4610" },
+    Dance: { event: "Dance", sheet: "https://sheet.best/api/sheets/9a7fc784-20dc-4ddc-8878-8e7d825f4610" },
   };
   if (eventObj.quiz.event === details.event) {
     let { sheet } = eventObj.quiz;
