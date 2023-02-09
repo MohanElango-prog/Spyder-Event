@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState,memo, useMemo } from "react";
+import React, { useEffect, useRef, useState, memo, useMemo } from "react";
 
 import "./dropdown.css";
 
@@ -18,19 +18,11 @@ const CloseIcon = () => {
   );
 };
 
-const Dropdown = ({
-  placeHolder,
-  options,
-  isMulti,
-  isSearchable,
-  onChange,
-  isClearable,
-  addNewOption
-}) => {
+const Dropdown = ({ placeHolder, options, isMulti, isSearchable, onChange, isClearable, addNewOption }) => {
   const [showMenu, setShowMenu] = useState(false);
   const [selectedValue, setSelectedValue] = useState(isMulti ? [] : null);
   const [searchValue, setSearchValue] = useState("");
-  const [currentHover,setCurrentHover]=useState("")
+  const [currentHover, setCurrentHover] = useState("");
   const searchRef = useRef();
   const inputRef = useRef();
 
@@ -46,17 +38,12 @@ const Dropdown = ({
     if (!searchValue) {
       return options;
     }
-    let filtered =  options.filter(
-      (option) =>
-        option.label.toLowerCase().indexOf(searchValue.toLowerCase()) >= 0
-    );
-      
-    if(filtered.length === 0 && addNewOption)
-      filtered.push({label: `Add "${searchValue}" to option`,value: searchValue });
+    let filtered = options.filter((option) => option.label.toLowerCase().indexOf(searchValue.toLowerCase()) >= 0);
 
-    
+    if (filtered.length === 0 && addNewOption) filtered.push({ label: `Add "${searchValue}" to option`, value: searchValue });
+
     return filtered;
-  },[searchValue]);
+  }, [searchValue]);
 
   useEffect(() => {
     const handler = (e) => {
@@ -69,25 +56,27 @@ const Dropdown = ({
     return () => {
       window.removeEventListener("click", handler);
     };
-  },[inputRef.current]);
+  }, [inputRef.current]);
 
-  const handleArrowKeys=(e)=>{
-   if(e.keyCode === 38){ //up arrow
-         if(currentHover !== "" && currentHover > 0)
-         setCurrentHover(currentHover - 1)
-         else
-         {setCurrentHover(getOptions.length - 1); e.currentTarget.focus()}
-     }else if(e.keyCode === 40){ /// down arrow
-         if( currentHover !== "" && currentHover < getOptions.length - 1)
-         setCurrentHover(currentHover + 1);
-         else
-         setCurrentHover(0);
-     }else if(e.keyCode === 13){///enter key
-         let selected= getOptions.filter((Obj,formOptIndex)=>currentHover===formOptIndex)[0];
-        onItemClick(selected)
-         setCurrentHover("");
-     }
- }
+  const handleArrowKeys = (e) => {
+    if (e.keyCode === 38) {
+      //up arrow
+      if (currentHover !== "" && currentHover > 0) setCurrentHover(currentHover - 1);
+      else {
+        setCurrentHover(getOptions.length - 1);
+        e.currentTarget.focus();
+      }
+    } else if (e.keyCode === 40) {
+      /// down arrow
+      if (currentHover !== "" && currentHover < getOptions.length - 1) setCurrentHover(currentHover + 1);
+      else setCurrentHover(0);
+    } else if (e.keyCode === 13) {
+      ///enter key
+      let selected = getOptions.filter((Obj, formOptIndex) => currentHover === formOptIndex)[0];
+      onItemClick(selected);
+      setCurrentHover("");
+    }
+  };
 
   const handleInputClick = (e) => {
     setShowMenu(!showMenu);
@@ -103,19 +92,19 @@ const Dropdown = ({
           {selectedValue.map((option) => (
             <div key={option.value} className="dropdown-tag-item">
               {option.label}
-              <span
+              {/* <span
                 onClick={(e) => onTagRemove(e, option)}
                 className="dropdown-tag-close"
               >
                 <CloseIcon />
-              </span>
+              </span> */}
             </div>
           ))}
         </div>
       );
     }
-    return selectedValue.label.replace('Add','Added') ;
-  },[selectedValue]);
+    return selectedValue.label.replace("Add", "Added");
+  }, [selectedValue]);
 
   const removeOption = (option) => {
     return selectedValue.filter((o) => o.value !== option.value);
@@ -138,7 +127,7 @@ const Dropdown = ({
       }
     } else {
       newValue = option;
-      setShowMenu(false)
+      setShowMenu(false);
     }
     setSelectedValue(newValue);
     onChange(newValue);
@@ -160,14 +149,15 @@ const Dropdown = ({
     setSearchValue(e.target.value);
   };
 
-
-
-const clearableOption=()=>{
-   if(isClearable && selectedValue?.toLocaleString()?.length )
-  return <i align-self="right"onClick={()=>setSelectedValue( isMulti ? [] :null)}><CloseIcon /></i>
-  else
-  return null
-}
+  const clearableOption = () => {
+    if (isClearable && selectedValue?.toLocaleString()?.length)
+      return (
+        <i align-self="right" onClick={() => setSelectedValue(isMulti ? [] : null)}>
+          {/* <CloseIcon /> */}
+        </i>
+      );
+    else return null;
+  };
 
   return (
     <div className="dropdown-container">
@@ -184,16 +174,18 @@ const clearableOption=()=>{
         <div className="dropdown-menu">
           {isSearchable && (
             <div className="search-box">
-              <input  value={searchValue} ref={searchRef} 
-              onChange={onSearch} onKeyDown={handleArrowKeys}/>
+              <input value={searchValue} ref={searchRef} onChange={onSearch} onKeyDown={handleArrowKeys} />
             </div>
           )}
-          {getOptions.map((option,index) => (
+          {getOptions.map((option, index) => (
             <div
-              onClick={(e) => {onItemClick(option);e.stopPropagation()}}
+              onClick={(e) => {
+                onItemClick(option);
+                e.stopPropagation();
+              }}
               key={option.value}
-              onMouseOver={(e)=>setCurrentHover(index)}
-              className={`dropdown-item ${isSelected(option) && "selected"} ${currentHover===index && "dropdown-item-hover"}`}
+              onMouseOver={(e) => setCurrentHover(index)}
+              className={`dropdown-item ${isSelected(option) && "selected"} ${currentHover === index && "dropdown-item-hover"}`}
             >
               {option.label}
             </div>
