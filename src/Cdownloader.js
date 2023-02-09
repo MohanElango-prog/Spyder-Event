@@ -9,6 +9,8 @@ const CertificateDownloader = () => {
   const location = useLocation();
   let teamData = location.state.teamData;
 
+  let debugging = teamData.map((item) => item.event === "Debugging");
+
   return (
     <div className="DownloadContainer">
       {teamData.map((item) => {
@@ -27,12 +29,12 @@ const CertificateDownloader = () => {
           />
         );
       })}
-      {teamData.map((item) => item.event === "Debugging") ? (
+      {debugging.includes(true) ? (
         <Link to={"https://forms.gle/4P9X6JJyhuievarr9"} target="_blank">
           <Button style={{ margin: "10px" }}>Start Debugging</Button>
         </Link>
       ) : (
-        <></>
+        <h3 style={{ margin: "10px" }}>Thanks for Participating</h3>
       )}
     </div>
   );
