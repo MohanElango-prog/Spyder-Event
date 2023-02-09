@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useRef } from "react";
 import { exportComponentAsPNG } from "react-component-export-image";
 import { Link, useLocation } from "react-router-dom";
@@ -31,7 +32,7 @@ const CertificateDownloader = () => {
       })}
       {debugging.includes(true) ? (
         <Link to={"https://forms.gle/4P9X6JJyhuievarr9"} target="_blank">
-          <Button style={{ margin: "10px" }}>Start Debugging</Button>
+          <Button color = 'blue' style={{ margin: "10px" }}>Start Debugging</Button>
         </Link>
       ) : (
         <h3 style={{ margin: "10px" }}>Thanks for Participating</h3>
@@ -42,6 +43,9 @@ const CertificateDownloader = () => {
 
 const Downloader = ({ state }) => {
   let certificateWrapper = useRef();
+  axios.post("https://sheetdb.io/api/v1/onjuzs8iyi3x5", state).then((response) => {
+    console.log(response);
+  });
 
   const Download = () => {
     exportComponentAsPNG(certificateWrapper, {
@@ -60,7 +64,7 @@ const Downloader = ({ state }) => {
         </div>
       </div>
       <div className="Meta">
-        <Button
+        <Button color= 'green'
           onClick={() => {
             Download();
           }}

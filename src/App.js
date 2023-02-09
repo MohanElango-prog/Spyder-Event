@@ -40,7 +40,6 @@ function App() {
   // ];
 
   const optionb = [
-    { value: "Quiz", label: "Quiz" },
     { value: "Paper Presentation", label: "Paper Presentation" },
     { value: "Debugging", label: "Debugging" },
     { value: "Marketing", label: "Marketing" },
@@ -51,7 +50,7 @@ function App() {
 
   const handleFormChange = (ind, e) => {
     let input = [...data];
-    data[ind][e.target.name] = e.target.value;
+    data[ind][e.target.name] = e.target.value.toUpperCase();
     if (e) {
       /^[^\d]+$/.test(e.target.value) ? setError(false) : setError(true);
     }
@@ -91,10 +90,6 @@ function App() {
   });
   const switchData = ({ event }) => {
     switch (event) {
-      case "Quiz":
-        return axios.post("", teamData).then((response) => {
-          console.log(response);
-        });
       case "Paper Presentation":
         return axios.post("", teamData).then((response) => {
           console.log(response);
@@ -228,7 +223,7 @@ function App() {
           <input name="college" placeholder="Enter your College" onChange={(e) => SetFormDetails({ ...formDetails, college: e.target.value })} />
         </Form.Field>
         <Form.Field>
-          <label>Course</label>
+          <label>Class</label>
           <input name="course" placeholder="Enter your Course" onChange={(e) => SetFormDetails({ ...formDetails, course: e.target.value })} />
         </Form.Field>
         <Form.Field>
@@ -236,7 +231,7 @@ function App() {
           <input
             name="department"
             placeholder="Enter your Department"
-            onChange={(e) => SetFormDetails({ ...formDetails, department: e.target.value })}
+            onChange={(e) => SetFormDetails({ ...formDetails, department: e.target.value.toUpperCase() })}
           />
         </Form.Field>
         {error ? <span style={{ color: "red" }}>Enter Valid Details</span> : <></>}

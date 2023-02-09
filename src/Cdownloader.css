@@ -13,12 +13,6 @@
   padding: 15px;
   width: fit-content;
 }
-.Download .Meta {
-  flex-grow: 1;
-  padding-right: 15px;
-  display: flex;
-  justify-content: center;
-}
 .Download .Meta input {
   font-family: inherit;
   padding: 5px;
@@ -26,15 +20,6 @@
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.25);
   border: 2px solid rgba(0, 0, 0, 0.25);
   border-radius: 5px;
-}
-.Download .Meta button {
-  padding: 10px 15px;
-  border: 2px solid #87ceeb;
-  background-color: #e7e7e7;
-  font-family: inherit;
-  margin: 20px 0;
-  border-radius: 10px;
-  cursor: pointer;
 }
 .Download #downloadWrapper {
   padding: 20px;
