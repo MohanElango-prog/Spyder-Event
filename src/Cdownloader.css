@@ -1,6 +1,12 @@
 * {
   box-sizing: border-box;
 }
+.DownloadContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  align-items: center;
+}
 .Download {
   font-family: "Hachi Maru Pop", cursive;
   /* display: flex; */
@@ -41,24 +47,24 @@
   display: block;
 }
 .Download #certificateWrapper p {
-  font-family: auto;
+  font-family: inherit;
   margin: 0;
 }
 .Download .certifyName {
   position: absolute;
-  left: 255px;
-  top: 190px;
-  font-size: 15pt;
+  left: 300px;
+  top: 175px;
+  font-size: 18pt;
 }
 .Download .certifyCollege {
   position: absolute;
-  left: 435px;
-  top: 200px;
-  font-size: 8pt;
+  left: 125px;
+  top: 217px;
+  font-size: 12pt;
 }
 .Download .certifyEvent {
   position: absolute;
-  left: 165px;
-  top: 232px;
-  font-size: 9pt;
+  left: 133px;
+  top: 251px;
+  font-size: 13pt;
 }
