@@ -80,9 +80,10 @@ function App() {
     ) {
       if ([...data].every((item) => item.name !== "") && !error) {
         e.preventDefault();
-        axios.post("https://sheetdb.io/api/v1/onjuzs8iyi3x5", teamData).then((response) => {
-          response ? navigate("/download", { state: { teamData } }) : setError(true);
+      axios.post("https://sheetdb.io/api/v1/onjuzs8iyi3x5", teamData).then((response) => {
+          console.log(response);
         });
+        navigate("/download", { state: { teamData } });
       } else {
         setError(true);
       }
