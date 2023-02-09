@@ -19,26 +19,6 @@ function App() {
   const [error, setError] = useState(false);
   const navigate = useNavigate();
 
-  // const optionc = [
-  //   { value: "Bsc - 1st year", label: "Bsc - 1st year" },
-  //   { value: "Bsc - 2nd year", label: "Bsc - 2nd year" },
-  //   { value: "Bsc - 3rd year", label: "Bsc - 3rd year" },
-  //   { value: "Msc - 1st year", label: "Msc - 1st year" },
-  //   { value: "Msc - 2nd year", label: "Msc - 2nd year" },
-  //   { value: "Mca - 1st year", label: "Bsc - 1st year" },
-  //   { value: "Mca - 2nd year", label: "Mca - 2nd year" },
-  //   { value: "Bcom - 1st year", label: "Bcom - 1st year" },
-  //   { value: "Bcom - 2nd year", label: "Bcom - 2nd year" },
-  //   { value: "Bcom - 3rd year", label: "Bcom - 3rd year" },
-  //   { value: "Mcom - 1st year", label: "Mcom - 1st year" },
-  //   { value: "Mcom - 2nd year", label: "Mcom - 2nd year" },
-  //   { value: "BA - 1st year", label: "BA - 1st year" },
-  //   { value: "BA - 2nd year", label: "BA - 2nd year" },
-  //   { value: "BA - 3rd year", label: "BA - 3rd year" },
-  //   { value: "MA - 1st year", label: "MA - 1st year" },
-  //   { value: "MA - 2nd year", label: "MA - 2nd year" },
-  // ];
-
   const optionb = [
     { value: "Paper Presentation", label: "Paper Presentation" },
     { value: "Debugging", label: "Debugging" },
@@ -91,27 +71,27 @@ function App() {
   const switchData = ({ event }) => {
     switch (event) {
       case "Paper Presentation":
-        return axios.post("", teamData).then((response) => {
+        return axios.post("https://sheetdb.io/api/v1/onjuzs8iyi3x5", teamData).then((response) => {
           console.log(response);
         });
       case "Debugging":
-        return axios.post("", teamData).then((response) => {
+        return axios.post("https://sheetdb.io/api/v1/onjuzs8iyi3x5", teamData).then((response) => {
           console.log(response);
         });
       case "Marketing":
-        return axios.post("", teamData).then((response) => {
+        return axios.post("https://sheetdb.io/api/v1/onjuzs8iyi3x5", teamData).then((response) => {
           console.log(response);
         });
       case "Poster Design":
-        return axios.post("", teamData).then((response) => {
+        return axios.post("https://sheetdb.io/api/v1/onjuzs8iyi3x5", teamData).then((response) => {
           console.log(response);
         });
       case "Ideathon":
-        return axios.post("", teamData).then((response) => {
+        return axios.post("https://sheetdb.io/api/v1/onjuzs8iyi3x5", teamData).then((response) => {
           console.log(response);
         });
       case "Dance":
-        return axios.post("", teamData).then((response) => {
+        return axios.post("https://sheetdb.io/api/v1/onjuzs8iyi3x5", teamData).then((response) => {
           console.log(response);
         });
       default: {
