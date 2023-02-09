@@ -68,37 +68,6 @@ function App() {
   let teamData = data.map((name) => {
     return Object.assign({}, name, formDetails);
   });
-  const switchData = ({ event }) => {
-    switch (event) {
-      case "Paper Presentation":
-        return axios.post("https://sheetdb.io/api/v1/onjuzs8iyi3x5", teamData).then((response) => {
-          console.log(response);
-        });
-      case "Debugging":
-        return axios.post("https://sheetdb.io/api/v1/onjuzs8iyi3x5", teamData).then((response) => {
-          console.log(response);
-        });
-      case "Marketing":
-        return axios.post("https://sheetdb.io/api/v1/onjuzs8iyi3x5", teamData).then((response) => {
-          console.log(response);
-        });
-      case "Poster Design":
-        return axios.post("https://sheetdb.io/api/v1/onjuzs8iyi3x5", teamData).then((response) => {
-          console.log(response);
-        });
-      case "Ideathon":
-        return axios.post("https://sheetdb.io/api/v1/onjuzs8iyi3x5", teamData).then((response) => {
-          console.log(response);
-        });
-      case "Dance":
-        return axios.post("https://sheetdb.io/api/v1/onjuzs8iyi3x5", teamData).then((response) => {
-          console.log(response);
-        });
-      default: {
-        return "";
-      }
-    }
-  };
   const handleSubmit = (e) => {
     if (
       formDetails.college &&
@@ -111,8 +80,9 @@ function App() {
     ) {
       if ([...data].every((item) => item.name !== "") && !error) {
         e.preventDefault();
-        teamData.map((item) => switchData(item));
-        navigate("/download", { state: { teamData } });
+        axios.post("https://sheetdb.io/api/v1/onjuzs8iyi3x5", teamData).then((response) => {
+          response ? navigate("/download", { state: { teamData } }) : setError(true);
+        });
       } else {
         setError(true);
       }
