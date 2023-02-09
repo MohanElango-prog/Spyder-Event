@@ -1,5 +1,4 @@
-import axios from "axios";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 import { exportComponentAsPNG } from "react-component-export-image";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "semantic-ui-react";
@@ -11,7 +10,7 @@ const CertificateDownloader = () => {
   let teamData = location.state.teamData;
 
   return (
-    <div className="DownloadContainer" style={{ display: "flex" }}>
+    <div className="DownloadContainer">
       {teamData.map((item) => {
         return (
           <Downloader
@@ -30,7 +29,7 @@ const CertificateDownloader = () => {
       })}
       {teamData.map((item) => item.event === "Debugging") ? (
         <Link to={"https://forms.gle/4P9X6JJyhuievarr9"} target="_blank">
-          <Button>Start Debugging</Button>
+          <Button style={{ margin: "10px" }}>Start Debugging</Button>
         </Link>
       ) : (
         <></>
@@ -59,14 +58,14 @@ const Downloader = ({ state }) => {
         </div>
       </div>
       <div className="Meta">
-        <button
+        <Button
           onClick={() => {
             Download();
           }}
         >
           {" "}
           Download
-        </button>
+        </Button>
       </div>
     </div>
   );

@@ -4,7 +4,7 @@
 .DownloadContainer {
   display: flex;
   flex-direction: column;
-  width: 100vw;
+  flex-wrap: wrap;
   align-items: center;
 }
 .Download {
@@ -16,6 +16,8 @@
 .Download .Meta {
   flex-grow: 1;
   padding-right: 15px;
+  display: flex;
+  justify-content: center;
 }
 .Download .Meta input {
   font-family: inherit;
@@ -52,9 +54,9 @@
 }
 .Download .certifyName {
   position: absolute;
-  left: 300px;
-  top: 175px;
-  font-size: 18pt;
+  left: 290px;
+  top: 176px;
+  font-size: 16pt;
 }
 .Download .certifyCollege {
   position: absolute;
@@ -65,6 +67,6 @@
 .Download .certifyEvent {
   position: absolute;
   left: 133px;
-  top: 251px;
-  font-size: 13pt;
+  top: 255px;
+  font-size: 11pt;
 }
