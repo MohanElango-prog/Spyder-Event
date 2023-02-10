@@ -4,6 +4,12 @@
 .container {
   padding: 20px;
 }
+.downloadBtn {
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+}
+
 input::-webkit-inner-spin-button {
   appearance: none;
   margin: 0;
