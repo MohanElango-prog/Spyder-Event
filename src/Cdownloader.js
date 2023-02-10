@@ -47,6 +47,7 @@ const Downloader = ({ state }) => {
   let certificateWrapper = useRef();
   const Download = () => {
     exportComponentAsPNG(certificateWrapper, {
+      fileName: `${state.name} Certificate.jpeg`,
       html2CanvasOptions: { backgroundColor: null },
     });
   };
