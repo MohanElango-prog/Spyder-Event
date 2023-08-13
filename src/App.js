@@ -3,6 +3,8 @@ import { Button, Form, Container, Header } from "semantic-ui-react";
 import "./App.css";
 import { useNavigate } from "react-router-dom";
 import DropDown from "./Select1/DropDown";
+import spyderBanner from "./Assets/Spyder-Banner.jpg";
+import axios from "axios";
 
 function App() {
   const [data, SetData] = useState([{ name: "" }]);
@@ -17,39 +19,18 @@ function App() {
   const [error, setError] = useState(false);
   const navigate = useNavigate();
 
-  const optionc = [
-    { value: "Bsc - 1st year", label: "Bsc - 1st year" },
-    { value: "Bsc - 2nd year", label: "Bsc - 2nd year" },
-    { value: "Bsc - 3rd year", label: "Bsc - 3rd year" },
-    { value: "Msc - 1st year", label: "Msc - 1st year" },
-    { value: "Msc - 2nd year", label: "Msc - 2nd year" },
-    { value: "Mca - 1st year", label: "Bsc - 1st year" },
-    { value: "Mca - 2nd year", label: "Mca - 2nd year" },
-    { value: "Bcom - 1st year", label: "Bcom - 1st year" },
-    { value: "Bcom - 2nd year", label: "Bcom - 2nd year" },
-    { value: "Bcom - 3rd year", label: "Bcom - 3rd year" },
-    { value: "Mcom - 1st year", label: "Mcom - 1st year" },
-    { value: "Mcom - 2nd year", label: "Mcom - 2nd year" },
-    { value: "BA - 1st year", label: "BA - 1st year" },
-    { value: "BA - 2nd year", label: "BA - 2nd year" },
-    { value: "BA - 3rd year", label: "BA - 3rd year" },
-    { value: "MA - 1st year", label: "MA - 1st year" },
-    { value: "MA - 2nd year", label: "MA - 2nd year" },
-  ];
-
   const optionb = [
-    { value: "Quiz", label: "Quiz" },
     { value: "Paper Presentation", label: "Paper Presentation" },
     { value: "Debugging", label: "Debugging" },
     { value: "Marketing", label: "Marketing" },
     { value: "Poster Design", label: "Poster Design" },
     { value: "Ideathon", label: "Ideathon" },
-    { value: "Dance", label: "Dance" },
+    { value: "Culturals", label: "Culturals" },
   ];
 
   const handleFormChange = (ind, e) => {
     let input = [...data];
-    data[ind][e.target.name] = e.target.value;
+    data[ind][e.target.name] = e.target.value.toUpperCase();
     if (e) {
       /^[^\d]+$/.test(e.target.value) ? setError(false) : setError(true);
     }
@@ -84,8 +65,10 @@ function App() {
       /^[0-9]{10}$/.test(e.target.value) ? setError(false) : setError(true);
     }
   };
+  let teamData = data.map((name) => {
+    return Object.assign({}, name, formDetails);
+  });
   const handleSubmit = (e) => {
-    console.log(formDetails);
     if (
       formDetails.college &&
       formDetails.department &&
@@ -95,17 +78,22 @@ function App() {
       formDetails.mobileNumber &&
       formDetails.course
     ) {
-      if ([...data].every((item) => item.name !== "")) {
+      if ([...data].every((item) => item.name !== "") && !error) {
         e.preventDefault();
-        navigate("/download", { state: { data, formDetails } });
+      axios.post("https://sheetdb.io/api/v1/onjuzs8iyi3x5", teamData).then((response) => {
+          console.log(response);
+        });
+        navigate("/download", { state: { teamData } });
       } else {
         setError(true);
       }
     } else setError(true);
   };
   return (
-    <Container fluid className="container">
-      <Header as="h2">React google sheet</Header>
+    <Container fluid className="container" style={{ width: "450px" }}>
+      <Header>
+        <img src={spyderBanner} alt="" style={{ width: "-webkit-fill-available", borderRadius: "5%", marginRight: "0px" }} />
+      </Header>
       <Form className="form">
         <Form.Field>
           <label>Event</label>
@@ -186,31 +174,23 @@ function App() {
           <input name="college" placeholder="Enter your College" onChange={(e) => SetFormDetails({ ...formDetails, college: e.target.value })} />
         </Form.Field>
         <Form.Field>
-          <label>Course</label>
-          <DropDown
-            isSearchable
-            isMulti={false}
-            placeholder="Enter your Course"
-            addNewOption={true}
-            options={optionc}
-            isClearable={true}
-            onChange={(e) => {
-              SetFormDetails({ ...formDetails, course: e.value });
-            }}
-          />
+          <label>Class</label>
+          <input name="course" placeholder="Enter your Course" onChange={(e) => SetFormDetails({ ...formDetails, course: e.target.value })} />
         </Form.Field>
         <Form.Field>
           <label>Department</label>
           <input
             name="department"
             placeholder="Enter your Department"
-            onChange={(e) => SetFormDetails({ ...formDetails, department: e.target.value })}
+            onChange={(e) => SetFormDetails({ ...formDetails, department: e.target.value.toUpperCase() })}
           />
         </Form.Field>
-        <Form.Field>{error ? <span style={{ color: "red" }}>Enter Valid Details</span> : <></>}</Form.Field>
-        <Button color="blue" type="submit" onClick={handleSubmit}>
-          Download Certificate and Continue
-        </Button>
+        {error ? <span style={{ color: "red" }}>Enter Valid Details</span> : <></>}
+        <div className="downloadBtn">
+          <Button color="blue" disabled={error} type="submit" onClick={handleSubmit}>
+            Download Certificate and Continue
+          </Button>
+        </div>
       </Form>
     </Container>
   );

@@ -1,15 +1,17 @@
 * {
   box-sizing: border-box;
 }
+.DownloadContainer {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+}
 .Download {
   font-family: "Hachi Maru Pop", cursive;
   /* display: flex; */
   padding: 15px;
   width: fit-content;
-}
-.Download .Meta {
-  flex-grow: 1;
-  padding-right: 15px;
 }
 .Download .Meta input {
   font-family: inherit;
@@ -18,15 +20,6 @@
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.25);
   border: 2px solid rgba(0, 0, 0, 0.25);
   border-radius: 5px;
-}
-.Download .Meta button {
-  padding: 10px 15px;
-  border: 2px solid #87ceeb;
-  background-color: #e7e7e7;
-  font-family: inherit;
-  margin: 20px 0;
-  border-radius: 10px;
-  cursor: pointer;
 }
 .Download #downloadWrapper {
   padding: 20px;
@@ -41,24 +34,24 @@
   display: block;
 }
 .Download #certificateWrapper p {
-  font-family: auto;
+  font-family: inherit;
   margin: 0;
 }
 .Download .certifyName {
   position: absolute;
-  left: 255px;
-  top: 190px;
-  font-size: 15pt;
+  left: 290px;
+  top: 176px;
+  font-size: 16pt;
 }
 .Download .certifyCollege {
   position: absolute;
-  left: 435px;
-  top: 200px;
-  font-size: 8pt;
+  left: 125px;
+  top: 217px;
+  font-size: 12pt;
 }
 .Download .certifyEvent {
   position: absolute;
-  left: 165px;
-  top: 232px;
-  font-size: 9pt;
+  left: 133px;
+  top: 255px;
+  font-size: 11pt;
 }
